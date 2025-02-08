@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Login({ setToken }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,7 +14,7 @@ function Login({ setToken }) {
       .then(response => {
         setToken(response.data.access_token);
         localStorage.setItem('token', response.data.access_token);
-        history.push('/tasks');
+        navigate('/tasks');
       })
       .catch(err => {
         setError('Invalid credentials');

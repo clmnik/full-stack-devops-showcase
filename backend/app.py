@@ -8,7 +8,7 @@ from datetime import timedelta
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['JWT_SECRET_KEY'] = 'super-secret-key'  # Ersetze diesen Schlüssel in der Produktion!
+app.config['JWT_SECRET_KEY'] = 'super-secret-key'  # In Produktion unbedingt ersetzen!
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(days=1)
 
 CORS(app)
@@ -35,10 +35,10 @@ class Task(db.Model):
     completed = db.Column(db.Boolean, default=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
-# Tabelle erstellen, falls noch nicht vorhanden
-@app.before_first_request
+# Anstelle von @app.before_first_request, rufen wir db.create_all() im App-Context auf
 def create_tables():
-    db.create_all()
+    with app.app_context():
+        db.create_all()
 
 # Authentifizierungs-Routen
 @app.route('/api/register', methods=['POST'])
@@ -136,4 +136,5 @@ def delete_task(task_id):
     return jsonify({"msg": "Task deleted"}), 200
 
 if __name__ == '__main__':
+    create_tables()  # Tabellen erstellen, falls nicht vorhanden
     app.run(debug=True)

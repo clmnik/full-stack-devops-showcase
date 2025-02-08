@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, Link } from 'react-router-dom';
 import Login from './components/Login';
 import Register from './components/Register';
 import Tasks from './components/Tasks';
@@ -42,20 +42,12 @@ function App() {
           </div>
         </div>
       </nav>
-      <Switch>
-        <Route exact path="/">
-          {token ? <Redirect to="/tasks" /> : <Redirect to="/login" />}
-        </Route>
-        <Route path="/login">
-          {token ? <Redirect to="/tasks" /> : <Login setToken={setToken} />}
-        </Route>
-        <Route path="/register">
-          {token ? <Redirect to="/tasks" /> : <Register />}
-        </Route>
-        <Route path="/tasks">
-          {token ? <Tasks token={token} /> : <Redirect to="/login" />}
-        </Route>
-      </Switch>
+      <Routes>
+        <Route path="/" element={token ? <Navigate to="/tasks" /> : <Navigate to="/login" />} />
+        <Route path="/login" element={token ? <Navigate to="/tasks" /> : <Login setToken={setToken} />} />
+        <Route path="/register" element={token ? <Navigate to="/tasks" /> : <Register />} />
+        <Route path="/tasks" element={token ? <Tasks token={token} /> : <Navigate to="/login" />} />
+      </Routes>
     </Router>
   );
 }
