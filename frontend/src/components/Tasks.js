@@ -12,8 +12,11 @@ function Tasks({ token }) {
       headers: { Authorization: `Bearer ${token}` }
     })
     .then(response => setTasks(response.data))
-    .catch(err => setError('Error fetching tasks'));
-  };
+    .catch(err => {
+      console.error("Error fetching tasks:", err.response ? err.response.data : err);
+      setError('Error fetching tasks: ' + (err.response && err.response.data.msg ? err.response.data.msg : ''));
+    });
+  }; // Hier den fehlenden Abschluss hinzugefügt
 
   useEffect(() => {
     fetchTasks();

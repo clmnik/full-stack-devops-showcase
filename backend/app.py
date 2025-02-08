@@ -100,6 +100,8 @@ def create_task():
 @jwt_required()
 def get_task(task_id):
     current_user_id = get_jwt_identity()
+    if current_user_id is None:
+        app.logger.error("No valid JWT found!")
     task = Task.query.filter_by(id=task_id, user_id=current_user_id).first()
     if not task:
         return jsonify({"msg": "Task not found"}), 404
