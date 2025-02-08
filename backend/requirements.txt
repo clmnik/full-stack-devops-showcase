@@ -1,4 +1,5 @@
-flask
-flask-cors
-flask-restful
-python-dotenv
+Flask
+Flask-Cors
+Flask-JWT-Extended
+Flask-SQLAlchemy
+Werkzeug
