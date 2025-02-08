@@ -3,6 +3,7 @@
 .idea/*
 frontend/node_modules
 backend/venv/
+backend/instance
 backend/instance/app.db
 backend/__pycache__/
 venv/
