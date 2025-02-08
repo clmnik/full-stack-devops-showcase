@@ -22,6 +22,30 @@ backend/*.db
 # -----------------------
 frontend/node_modules/      # Abhängigkeiten von npm/yarn
 frontend/.npm/             # npm Cache
-frontend/.
+frontend/.cache/           # Build-Cache von npm/yarn
+frontend/build/            # Build-Ordner (wird lokal generiert)
+frontend/dist/             # Falls du Webpack verwendest
+frontend/.parcel-cache/    # Falls du Parcel verwendest
+frontend/.next/            # Falls du Next.js verwendest
 
-.idea/
+# Lock-Dateien (optional, wenn du saubere Abhängigkeitsverwaltung willst)
+frontend/package-lock.json
+frontend/yarn.lock
+
+# Testing & Linting (optional, falls ungenutzt)
+frontend/jest.config.js
+frontend/src/setupTests.js
+frontend/src/reportWebVitals.js
+frontend/src/App.test.js    # Testdatei, falls du keine Tests nutzt
+
+
+.idea/                     # PyCharm-Projektordner
+.idea/*                    # Falls .idea/ doch schon getrackt wurde
+.vscode/                   # VS Code-Projektordner
+.DS_Store                  # macOS Datei
+Thumbs.db                  # Windows Datei
+
+# -----------------------
+# Frontend-Spezifisch (unwichtig für Git)
+# -----------------------
+frontend/.gitignore        
