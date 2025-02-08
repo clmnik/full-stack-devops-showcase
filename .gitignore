@@ -7,6 +7,12 @@ backend/instance
 backend/instance/app.db
 backend/__pycache__/
 venv/
+*.tfstate
+*.tfstate.backup
+.terraform/
+terraform/terraform.tfvars
+terraform/.terraform.lock.hcl
+
 backend/*.pyc              # Kompilierte Python-Dateien
 backend/*.pyo              # Optimierte Python-Dateien
 backend/.pytest_cache/     # Pytest-Cache-Dateien
