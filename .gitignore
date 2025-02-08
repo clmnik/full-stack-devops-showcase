@@ -1,7 +1,8 @@
 # -----------------------
 # Python (Backend)
 # -----------------------
-backend/venv/              # Virtuelle Umgebung für Python
+backend/venv/
+venv/
 backend/__pycache__/       # Python Bytecode
 backend/*.pyc              # Kompilierte Python-Dateien
 backend/*.pyo              # Optimierte Python-Dateien
@@ -22,3 +23,5 @@ backend/*.db
 frontend/node_modules/      # Abhängigkeiten von npm/yarn
 frontend/.npm/             # npm Cache
 frontend/.
+
+.idea/
