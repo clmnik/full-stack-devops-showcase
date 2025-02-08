@@ -1,7 +1,24 @@
-# Python
-backend/venv/
-__pycache__/
-*.pyc
+# -----------------------
+# Python (Backend)
+# -----------------------
+backend/venv/              # Virtuelle Umgebung für Python
+backend/__pycache__/       # Python Bytecode
+backend/*.pyc              # Kompilierte Python-Dateien
+backend/*.pyo              # Optimierte Python-Dateien
+backend/.pytest_cache/     # Pytest-Cache-Dateien
+backend/.mypy_cache/       # MyPy Type Checking Cache
 
-# Node.js
-frontend/node_modules/
+# Environment Variables (API-Keys, Secrets, Configs)
+backend/.env
+backend/.flaskenv
+
+# SQLite-Datenbanken (falls verwendet)
+backend/*.sqlite3
+backend/*.db
+
+# -----------------------
+# Node.js (Frontend)
+# -----------------------
+frontend/node_modules/      # Abhängigkeiten von npm/yarn
+frontend/.npm/             # npm Cache
+frontend/.
