@@ -1,7 +1,9 @@
+
 .idea/
 .idea/*
 frontend/node_modules
 backend/venv/
+backend/instance/app.db
 backend/__pycache__/
 venv/
 backend/*.pyc              # Kompilierte Python-Dateien
