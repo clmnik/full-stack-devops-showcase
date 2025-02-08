@@ -2,8 +2,8 @@
 .idea/*
 frontend/node_modules
 backend/venv/
+backend/__pycache__/
 venv/
-backend/__pycache__/       # Python Bytecode
 backend/*.pyc              # Kompilierte Python-Dateien
 backend/*.pyo              # Optimierte Python-Dateien
 backend/.pytest_cache/     # Pytest-Cache-Dateien
