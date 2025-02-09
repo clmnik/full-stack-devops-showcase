@@ -61,7 +61,7 @@ resource "aws_route_table_association" "public_rt_assoc" {
 # Sicherheitsgruppe für RDS (nur interne Kommunikation)
 resource "aws_security_group" "db_sg" {
   name        = "rds-sg"
-  description = "Sicherheitsgruppe für RDS MySQL"
+  description = "RDS MySQL Security Group"
   vpc_id      = aws_vpc.main_vpc.id
 
   ingress {
