@@ -12,6 +12,7 @@ venv/
 .terraform/
 terraform/terraform.tfvars
 terraform/.terraform.lock.hcl
+.helmlock
 
 backend/*.pyc              # Kompilierte Python-Dateien
 backend/*.pyo              # Optimierte Python-Dateien
