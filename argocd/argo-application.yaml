@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: "https://github.com/clmnik/full-stack-devops-showcase.git"
+    targetRevision: main
+    path: "helm/my-app"
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: "default"
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
