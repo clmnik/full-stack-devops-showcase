@@ -3,6 +3,7 @@ replicaCount: 1
 backend:
   image:
     repository: wly8/my-backend-image
+  tag: d26adca
   tag: 77aa8fd
   tag: 95675e9
   tag: b790f0b
@@ -13,6 +14,7 @@ backend:
 frontend:
   image:
     repository: wly8/my-frontend-image
+  tag: d26adca
   tag: 77aa8fd
   tag: 95675e9
   tag: b790f0b
