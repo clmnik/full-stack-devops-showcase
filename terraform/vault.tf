@@ -1,3 +1,8 @@
+variable "vault_ec2_public_key" {
+  type        = string
+  description = "Public key for the Vault EC2 instance"
+}
+
 resource "aws_s3_bucket" "vault_storage" {
   bucket = "my-vault-storage-bucket-${random_string.rand_id.result}"
   tags = {
@@ -16,6 +21,11 @@ resource "random_string" "rand_id" {
   length  = 8
   special = false
   upper   = false
+}
+
+resource "aws_key_pair" "vault_ec2_key" {
+  key_name   = "vault-ec2"
+  public_key = var.vault_ec2_public_key
 }
 
 data "aws_iam_policy_document" "vault_ec2_assume_role" {
@@ -104,6 +114,7 @@ resource "aws_instance" "vault_ec2" {
   subnet_id              = aws_subnet.private[0].id
   vpc_security_group_ids = [aws_security_group.vault_sg.id]
   iam_instance_profile   = aws_iam_instance_profile.vault_ec2_profile.name
+  key_name               = aws_key_pair.vault_ec2_key.key_name
   user_data = <<-EOF
     #!/bin/bash
     yum update -y
