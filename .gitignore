@@ -33,13 +33,12 @@ frontend/dist/             # Falls du Webpack verwendest
 frontend/.parcel-cache/    # Falls du Parcel verwendest
 frontend/.next/            # Falls du Next.js verwendest
 
-frontend/package-lock.json
 frontend/yarn.lock
 
 frontend/jest.config.js
 frontend/src/setupTests.js
 frontend/src/reportWebVitals.js
-frontend/src/App.test.js    # Testdatei, falls du keine Tests nutzt
+frontend/src/App.test.js
 
 
 
