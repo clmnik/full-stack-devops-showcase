@@ -44,11 +44,13 @@ jobs:
 
       - name: Update Helm Chart with new Image Tag
         run: |
-          sed -i "s|\(repository: my-backend-image\).*|\1\n  tag: ${{ steps.vars.outputs.SHA_SHORT }}|" helm/my-app/values.yaml
-          sed -i "s|\(repository: my-frontend-image\).*|\1\n  tag: ${{ steps.vars.outputs.SHA_SHORT }}|" helm/my-app/values.yaml
+          sed -i "s|\(repository: wly8/my-backend-image\).*|\1\\n  tag: ${{ steps.vars.outputs.SHA_SHORT }}|" helm/my-app/values.yaml
+          sed -i "s|\(repository: wly8/my-frontend-image\).*|\1\\n  tag: ${{ steps.vars.outputs.SHA_SHORT }}|" helm/my-app/values.yaml
 
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git add helm/my-app/values.yaml
-          git commit -m "chore: update image tags to ${{ steps.vars.outputs.SHA_SHORT }}"
+          git commit -m "chore: update image tags to ${{ steps.vars.outputs.SHA_SHORT }}" || echo "No changes to commit"
           git push origin main
+      
+      
