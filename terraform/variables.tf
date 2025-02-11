@@ -8,6 +8,11 @@ variable "vpc_cidr" {
   default     = "10.0.0.0/16"
 }
 
+variable "vault_kms_key_arn" {
+  type        = string
+  description = "ARN of the existing KMS Key used for Vault auto-unseal"
+}
+
 variable "public_subnet_cidrs" {
   description = "CIDR Blocks for public subnets"
   type        = list(string)
