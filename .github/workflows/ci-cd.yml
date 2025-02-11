@@ -32,7 +32,6 @@ jobs:
           docker push wly8/my-backend-image:${{ steps.vars.outputs.SHA_SHORT }}
           docker tag wly8/my-backend-image:${{ steps.vars.outputs.SHA_SHORT }} wly8/my-backend-image:latest
           docker push wly8/my-backend-image:latest
-      
 
       - name: Build & Push Frontend
         run: |
@@ -40,6 +39,7 @@ jobs:
           docker push wly8/my-frontend-image:${{ steps.vars.outputs.SHA_SHORT }}
           docker tag wly8/my-frontend-image:${{ steps.vars.outputs.SHA_SHORT }} wly8/my-frontend-image:latest
           docker push wly8/my-frontend-image:latest
+      
       
 
       - name: Update Helm Chart with new Image Tag

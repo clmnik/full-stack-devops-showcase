@@ -2,14 +2,14 @@ replicaCount: 1
 
 backend:
   image:
-    repository: my-backend-image
+    repository: wly8/my-backend-image
     tag: latest
   service:
     port: 5000
 
 frontend:
   image:
-    repository: my-frontend-image
+    repository: wly8/my-frontend-image
     tag: latest
   service:
     port: 80
