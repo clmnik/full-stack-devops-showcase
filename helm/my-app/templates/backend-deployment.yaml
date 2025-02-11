@@ -16,7 +16,15 @@ spec:
       labels:
         app: {{ include "my-app.name" . }}
         component: backend
+      annotations:
+        vault.hashicorp.com/agent-inject: "true"
+        vault.hashicorp.com/role: "my-app-role"
+        vault.hashicorp.com/agent-inject-secret-database-creds: "database/creds/app-role"
+        vault.hashicorp.com/agent-inject-template-database-creds: |
+          export DYNAMIC_DB_USERNAME={{ with secret "database/creds/app-role" }}{{ .Data.username }}{{ end }}
+          export DYNAMIC_DB_PASSWORD={{ with secret "database/creds/app-role" }}{{ .Data.password }}{{ end }}
     spec:
+      serviceAccountName: my-app-service-account  # Stelle sicher, dass dieser SA zur Vault-Rolle passt
       containers:
         - name: backend
           image: "{{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}"
@@ -26,3 +34,9 @@ spec:
           env:
             - name: FLASK_ENV
               value: "production"
+          volumeMounts:
+            - name: vault-agent-inject
+              mountPath: /vault/secrets
+      volumes:
+        - name: vault-agent-inject
+          emptyDir: {}
