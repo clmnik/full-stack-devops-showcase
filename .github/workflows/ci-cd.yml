@@ -25,17 +25,19 @@ jobs:
 
       - name: Build & Push Backend
         run: |
-          docker build -t my-backend-image:${{ steps.vars.outputs.SHA_SHORT }} ./backend
-          docker push my-backend-image:${{ steps.vars.outputs.SHA_SHORT }}
-          docker tag my-backend-image:${{ steps.vars.outputs.SHA_SHORT }} my-backend-image:latest
-          docker push my-backend-image:latest
+          docker build -t wly8/my-backend-image:${{ steps.vars.outputs.SHA_SHORT }} ./backend
+          docker push wly8/my-backend-image:${{ steps.vars.outputs.SHA_SHORT }}
+          docker tag wly8/my-backend-image:${{ steps.vars.outputs.SHA_SHORT }} wly8/my-backend-image:latest
+          docker push wly8/my-backend-image:latest
+      
 
       - name: Build & Push Frontend
         run: |
-          docker build -t my-frontend-image:${{ steps.vars.outputs.SHA_SHORT }} ./frontend
-          docker push my-frontend-image:${{ steps.vars.outputs.SHA_SHORT }}
-          docker tag my-frontend-image:${{ steps.vars.outputs.SHA_SHORT }} my-frontend-image:latest
-          docker push my-frontend-image:latest
+          docker build -t wly8/my-frontend-image:${{ steps.vars.outputs.SHA_SHORT }} ./frontend
+          docker push wly8/my-frontend-image:${{ steps.vars.outputs.SHA_SHORT }}
+          docker tag wly8/my-frontend-image:${{ steps.vars.outputs.SHA_SHORT }} wly8/my-frontend-image:latest
+          docker push wly8/my-frontend-image:latest
+      
 
       - name: Update Helm Chart with new Image Tag
         run: |
