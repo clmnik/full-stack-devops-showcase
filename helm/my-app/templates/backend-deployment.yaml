@@ -24,7 +24,7 @@ spec:
           export DYNAMIC_DB_USERNAME={{ with secret "database/creds/app-role" }}{{ .Data.username }}{{ end }}
           export DYNAMIC_DB_PASSWORD={{ with secret "database/creds/app-role" }}{{ .Data.password }}{{ end }}
     spec:
-      serviceAccountName: my-app-service-account  # Stelle sicher, dass dieser SA zur Vault-Rolle passt
+      serviceAccountName: my-app-service-account  # Dieser SA muss in Vault autorisiert sein
       containers:
         - name: backend
           image: "{{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}"
